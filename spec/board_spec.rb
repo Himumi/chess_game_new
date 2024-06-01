@@ -24,7 +24,7 @@ describe Board do
     subject(:board_add) { described_class.new }
 
     it 'adds piece onto board' do
-      board_add.add("A", 0, 0)
+      board_add.add("A", [0, 0])
       a8 = board_add.board[0][0]
       expect(a8).to eq("A")
     end
@@ -34,7 +34,7 @@ describe Board do
     subject(:board_remove) { described_class.new }
 
     before do
-      board_remove.add("A", 0, 0)
+      board_remove.add("A", [0, 0])
     end
 
     it 'removes piece from board' do
@@ -52,7 +52,7 @@ describe Board do
 
       before do
         a8, h1 = [0, 0], [7, 7]
-        board_move.add("A", 0, 0)
+        board_move.add("A", [0, 0])
         board_move.move(a8, h1)
       end
 
