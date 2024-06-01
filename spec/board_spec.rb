@@ -29,4 +29,19 @@ describe Board do
       expect(h1).to eq("A")
     end
   end
+
+  describe '#remove' do
+    subject(:board_remove) { described_class.new }
+
+    before do
+      board_remove.add("A", 0, 0)
+    end
+
+    it 'removes piece from board' do
+      board_remove.remove(0, 0)
+      a8 = board_remove.board[0][0]
+
+      expect(a8).to be_nil
+    end
+  end
 end
