@@ -27,7 +27,8 @@ class Board
     @board[row][column] = input
   end
 
-  def remove(row, column)
+  def remove(target)
+    row, column = target[0], target[1]
     @board[row][column] = nil
   end
 
