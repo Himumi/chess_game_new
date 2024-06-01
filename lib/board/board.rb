@@ -25,4 +25,8 @@ class Board
   def add(input, row, column)
     @board[row][column] = input
   end
+
+  def remove(row, column)
+    @board[row][column] = nil
+  end
 end
