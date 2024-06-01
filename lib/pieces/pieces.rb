@@ -5,6 +5,10 @@ class Pieces
     @color = color
     @position = position
   end
+
+  def to_s
+    @symbol
+  end
 end
 
 class King < Pieces
