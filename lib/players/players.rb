@@ -4,6 +4,10 @@ class Players
   def initialize(name)
     @name = name
   end
+
+  def to_s
+    @name
+  end
 end
 
 class WhitePlayer < Players
@@ -24,7 +28,7 @@ class WhitePlayer < Players
   end
 end
 
-class BlackPlayer
+class BlackPlayer < Players
   attr_accessor :pieces
   attr_reader :color
 
