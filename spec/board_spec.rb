@@ -44,4 +44,27 @@ describe Board do
       expect(a8).to be_nil
     end
   end
+
+  describe '#move' do
+    subject(:board_move) { described_class.new }
+
+    context 'moves piece from a8 to h1' do
+
+      before do
+        a8, h1 = [0, 0], [7, 7]
+        board_move.add("A", 0, 0)
+        board_move.move(a8, h1)
+      end
+
+      it 'is nil at a8' do
+        a8 = board_move.board[0][0]
+        expect(a8).to be_nil
+      end
+
+      it 'is not nil at h1' do
+        h1 = board_move.board[7][7]
+        expect(h1).not_to be_nil
+      end
+    end
+  end
 end
