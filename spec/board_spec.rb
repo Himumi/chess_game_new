@@ -25,8 +25,8 @@ describe Board do
 
     it 'adds piece onto board' do
       board_add.add("A", 0, 0)
-      h1 = board_add.board[0][0]
-      expect(h1).to eq("A")
+      a8 = board_add.board[0][0]
+      expect(a8).to eq("A")
     end
   end
 
