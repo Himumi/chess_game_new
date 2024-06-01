@@ -21,4 +21,8 @@ class Board
     end
     puts letters
   end
+
+  def add(input, row, column)
+    @board[row][column] = input
+  end
 end
