@@ -29,4 +29,9 @@ class Board
   def remove(row, column)
     @board[row][column] = nil
   end
+
+  def move(source, goal)
+    @board[goal[0]][goal[1]] = @board[source[0]][source[1]]
+    @board[source[0]][source[1]] = nil
+  end
 end
