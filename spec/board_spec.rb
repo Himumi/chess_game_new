@@ -38,7 +38,7 @@ describe Board do
     end
 
     it 'removes piece from board' do
-      board_remove.remove(0, 0)
+      board_remove.remove([0, 0])
       a8 = board_remove.board[0][0]
 
       expect(a8).to be_nil
