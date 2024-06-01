@@ -19,4 +19,14 @@ describe Board do
       expect(total).to eq(64)
     end
   end
+
+  describe '#add' do
+    subject(:board_add) { described_class.new }
+
+    it 'adds piece onto board' do
+      board_add.add("A", 0, 0)
+      h1 = board_add.board[0][0]
+      expect(h1).to eq("A")
+    end
+  end
 end
