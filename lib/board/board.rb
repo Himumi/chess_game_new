@@ -22,7 +22,3 @@ class Board
     puts letters
   end
 end
-
-game = Board.new
-
-game.print_board
