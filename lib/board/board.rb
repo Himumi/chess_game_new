@@ -36,4 +36,9 @@ class Board
     @board[goal[0]][goal[1]] = @board[source[0]][source[1]]
     @board[source[0]][source[1]] = nil
   end
+
+  def on(target)
+    row, column = target[0], target[1]
+    @board[row][column]
+  end
 end
