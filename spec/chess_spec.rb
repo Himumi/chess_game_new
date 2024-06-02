@@ -12,6 +12,12 @@ describe Chess do
       expect(converted).to eq([0, 0])
     end
 
+    it 'converts a7 to [1, 0]' do
+      converted = game.convert_to_indexes('a7')
+
+      expect(converted).to eq([1, 0]) 
+    end
+
     it 'returns nil when key is invalid' do
       converted = game.convert_to_indexes('j1')
 
