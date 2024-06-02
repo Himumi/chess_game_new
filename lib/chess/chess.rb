@@ -35,7 +35,7 @@ class Chess
 
     return nil if letter.nil? or number.nil?
 
-    [letter, number]
+    [number, letter]
   end
 
   def convert_to_key(index)
