@@ -6,7 +6,7 @@ describe Chess do
   let(:second_player) { double('Player', color: 'black') }
   subject(:game) { described_class.new(board, [first_player, second_player]) }
   describe '#convert_to_indexes' do
-    it 'converts a1 to [0, 0]' do
+    it 'converts a8 to [0, 0]' do
       converted = game.convert_to_indexes('a8')
 
       expect(converted).to eq([0, 0])
