@@ -67,4 +67,41 @@ describe Board do
       end
     end
   end
+
+  describe '#on' do
+    subject(:board) { described_class.new }
+
+    context "when value on the board" do
+      before do
+        board.add('A', [7,7])
+        board.add('B', [5,5])
+      end
+
+      it 'returns true when value on the board' do
+        value = board.on([7,7])
+
+        expect(value).to eq('A')
+      end
+
+      it 'returns true when value on the board' do
+        value = board.on([5, 5])
+
+        expect(value).to eq('B')
+      end
+    end
+
+    context "when value not on the board" do
+
+      before do
+        board.add('A', [7,7])
+        board.add('B', [5,5])
+      end
+
+      it 'returns false when value not on the board' do
+        value = board.on([0, 0])
+
+        expect(value).to be_nil
+      end
+    end
+  end
 end
