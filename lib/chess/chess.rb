@@ -57,4 +57,14 @@ class Chess
 
     "#{letter}#{number}"
   end
+
+  def add_to_board
+    @players.each do |player|
+      player.pieces.each do |role, keys|
+        keys.each do |key|
+          @board.add(new_piece(role, player.color, key), convert_to_indexes(key))
+        end
+      end
+    end
+  end
 end
