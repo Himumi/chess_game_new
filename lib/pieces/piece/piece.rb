@@ -17,4 +17,8 @@ class Piece
   def ally?(color)
     @color.eql?(color)
   end
+
+  def enemy?(color)
+    !ally?(color)
+  end
 end
