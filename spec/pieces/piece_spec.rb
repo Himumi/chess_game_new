@@ -16,4 +16,18 @@ describe Piece do
       end
     end
   end
+
+  describe '#enemy?' do
+    context "when target is enemy" do
+      it 'returns true' do
+        expect(piece.enemy?('black')).to be true
+      end
+    end
+
+    context "when target is not enemy" do
+      it 'returns false' do
+        expect(piece.enemy?('white')).to be false
+      end
+    end
+  end
 end
