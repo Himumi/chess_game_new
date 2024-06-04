@@ -13,4 +13,8 @@ class Piece
   def to_s
     @symbol
   end
+
+  def ally?(color)
+    @color.eql?(color)
+  end
 end
