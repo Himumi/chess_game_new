@@ -41,4 +41,9 @@ class Board
     row, column = target[0], target[1]
     @board[row][column]
   end
+
+  def is_empty(target)
+    row, column = target[0], target[1]
+    @board[row][column].nil?
+  end
 end
