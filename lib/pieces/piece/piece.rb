@@ -1,6 +1,9 @@
+require_relative '../../modules/converter'
 class Piece
   attr_accessor :position
   attr_reader :color
+
+  include Converter
 
   def initialize(color, position)
     @color = color
