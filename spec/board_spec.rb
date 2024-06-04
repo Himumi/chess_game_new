@@ -96,4 +96,30 @@ describe Board do
       end
     end
   end
+
+  describe '#is_empty' do
+
+    context 'when target is empty' do
+      it 'returns true' do
+        empty = board.is_empty([0,0])
+
+        expect(empty).to be true
+      end
+    end
+
+    context "when target is not empty" do
+
+      before do
+        
+        board.add("A", [0, 0])
+      end
+
+      it 'returns false' do
+        empty = board.is_empty([0, 0])
+
+        expect(empty).to be false
+      end
+    end
+
+  end
 end
