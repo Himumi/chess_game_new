@@ -1,7 +1,7 @@
 require_relative '../piece/piece'
 
 class Queen < Piece
-  attr_reader :role, :symbol, :notation
+  attr_reader :role, :symbol, :notation, :paths
 
   def initialize(color, position)
     @role = 'queen'
@@ -9,6 +9,7 @@ class Queen < Piece
     @position = position
     @symbol = (color == 'white' ? "\u265B" : "\u2655")
     @notation = 'Q'
+    @paths = 8
   end
 
   def direction(position, way)
