@@ -13,7 +13,6 @@ class Knight < Piece
     @symbol = (color == 'white' ? "\u265E" : "\u2658")
     @notation = 'N'
     @paths = 8
-    @each_path = 1
   end
 
   def direction(position, way)
