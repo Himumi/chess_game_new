@@ -41,6 +41,10 @@ class Pawn < Piece
     paths[@color][path]
   end
 
+  def update_moves(board)
+    @valid_moves = valid_move(board) + capturable_move(board)
+  end
+  
   def valid_move(board)
     stop = false
     result = []
