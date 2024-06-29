@@ -1,30 +1,16 @@
 module UniqUpdateMoves
   def update_moves(board)
     result = []
-    converted = convert_to_indexes(position)
+    base = convert_to_indexes(position)
 
     @paths.times do |path|
-      stop = false
-      base = converted
+      key = direction(base, path)
 
-      @each_path.times do
-        curr = direction(base, path)
+      next if key.nil? || (!board.on(key).nil? && board.on(key).ally?(@color))
 
-        if stop or curr.nil? or (
-            !board.is_empty(curr) and board.on(curr).ally?(@color)
-          )
-          stop = true
-          next
-        end
-
-        if !board.is_empty(curr) and board.on(curr).ally?(@color)
-          stop = true
-        end
-
-        result << convert_to_key(curr)
-        base = curr
-      end
+      result << convert_to_key(key)
     end
+    
     @valid_moves = result
   end
 end
