@@ -38,7 +38,7 @@ class Piece
         next
       end
 
-      seen[path] = key if !board.on(key).nil? && !board.on(key).ally?(@color) # to prevent leap over enemy
+      seen[path] = key if !board.on(key).nil? && board.on(key).enemy?(@color) # to prevent leap over enemy
 
       queue <<  add_direction(key, path) unless direction(key, path).nil?
       result << convert_to_key(key)
