@@ -60,4 +60,19 @@ class Pawn < Piece
 
     result
   end
+
+  def capturable_move(board)
+    result = []
+    current = convert_to_indexes(@position)
+
+    2.times do |path|
+      key = capturable_direction(current, path)
+
+      next if key.nil? || board.on(key).nil? || board.on(key).ally?(@color)
+
+      result << convert_to_key(key)
+    end
+
+    result
+  end
 end
