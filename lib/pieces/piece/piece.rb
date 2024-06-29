@@ -23,33 +23,37 @@ class Piece
   end
 
   def update_moves(board)
-    queue = []
-    seen = {}
     result = []
-
-    converted = convert_to_indexes(@position)
-
-    paths.times do |path|
-      next_direction = direction(converted, path)
-      queue << [next_direction, path] if !next_direction.nil?
-    end
+    seen = {}
+    queue = add_all_directions(@key)
 
     loop do
       return @valid_moves = result if queue.empty?
 
       first = queue.shift
-      key, way = first[0], first[1]
+      key, path = first[0], first[1]
 
-      if seen[way] || key.nil? || ( !board.on(key).nil? && board.on(key).ally?(@color))
-        seen[way] = key if !seen[way]
+      if seen[path] || key.nil? || ( !board.on(key).nil? && board.on(key).ally?(@color))
+        seen[path] = key if !seen[path]
         next
       end
 
-      seen[way] = key if !board.on(key).nil? && !board.on(key).ally?(@color)
+      seen[path] = key if !board.on(key).nil? && !board.on(key).ally?(@color)
 
-      queue << [direction(key, way), way] unless direction(key, way).nil?
-
+      queue << [direction(key, path), path] unless direction(key, path).nil?
       result << convert_to_key(key)
     end
+  end
+
+  def add_all_directions(key)
+    result = []
+    converted = convert_to_indexes(@position)
+
+    paths.times do |path|
+      next_direction = direction(converted, path)
+      result << [next_direction, path] if !next_direction.nil?
+    end
+
+    result
   end
 end
