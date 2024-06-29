@@ -2,6 +2,7 @@ require_relative '../piece/piece'
 
 class Pawn < Piece
   attr_reader :role, :symbol, :notation
+  attr_accessor :moved
 
   def initialize(color, position)
     @role = 'pawn'
@@ -9,7 +10,7 @@ class Pawn < Piece
     @position = position
     @symbol = (color == 'white' ? "\u265F" : "\u2659")
     @notation = ''
-    @moved = true
+    @moved = false
   end
 
   def valid_direction(position)
@@ -40,8 +41,23 @@ class Pawn < Piece
     paths[@color][path]
   end
 
+  def valid_move(board)
+    stop = false
+    result = []
+
+    max_move = @moved ? 1 : 2 # when false can move 2 step
+
+    current = convert_to_indexes(@position)
+
+    max_move.times do
+      key = valid_direction(current)
+
+      next stop = true if stop || key.nil? || !board.on(key).nil?
+
+      current = key
+      result << convert_to_key(key)
+    end
+
+    result
+  end
 end
-
-pawn = Pawn.new("white", "a1")
-
-p pawn.capturable_direction([6,0], 0)
