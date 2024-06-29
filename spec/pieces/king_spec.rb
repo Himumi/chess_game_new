@@ -1,5 +1,27 @@
 require_relative '../../lib/pieces/king/king'
 
+class Board
+  def initialize
+    @board = Array.new(8) { Array.new(8) }
+  end
+
+  def add(input, source)
+    row, column = source[0], source[1]
+    @board[row][column] = input
+  end
+
+  def on(target)
+    row, column = target[0], target[1]
+    @board[row][column]
+  end
+
+  def is_empty(target)
+    row, column = target[0], target[1]
+    @board[row][column].nil?
+  end
+end
+
+
 describe King do
   subject(:king) { described_class.new('white', 'd4') }
 
@@ -44,6 +66,22 @@ describe King do
 
       it 'returns nil if invalid input' do
         expect(king.direction([9, 9], 1)).to be_nil
+      end
+    end
+  end
+
+  describe '#update_moves' do
+    subject(:board) { Board.new }
+    context 'when king surrounded no enemy' do
+      before do
+        board.add(king, king.convert_to_indexes(king.position))
+      end
+
+      it 'has 8 valid moves' do
+        king.update_moves(board)
+        count_moves = king.valid_moves.length
+
+        expect(count_moves).to eq(8)
       end
     end
   end

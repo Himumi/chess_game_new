@@ -9,6 +9,8 @@ class King < Piece
     @position = position
     @symbol = (color == 'white' ? "\u265A" : "\u2654")
     @notation = 'K'
+    @paths = 8
+    @each_path = 1
   end
 
   def direction(position, way)
