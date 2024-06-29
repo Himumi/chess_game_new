@@ -40,7 +40,7 @@ class Piece
 
       seen[path] = key if !board.on(key).nil? && !board.on(key).ally?(@color)
 
-      queue << [direction(key, path), path] unless direction(key, path).nil?
+      queue <<  add_direction(key, path) unless direction(key, path).nil?
       result << convert_to_key(key)
     end
   end
@@ -55,5 +55,9 @@ class Piece
     end
 
     result
+  end
+
+  def add_direction(key, path)
+    [direction(key, path), path]
   end
 end
