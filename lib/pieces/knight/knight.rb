@@ -1,7 +1,10 @@
 require_relative '../piece/piece'
+require_relative '../../modules/uniq_update_moves'
 
 class Knight < Piece
-  attr_reader :role, :symbol, :notation
+  attr_reader :role, :symbol, :notation, :paths, :each_path
+
+  include UniqUpdateMoves
 
   def initialize(color, position)
     @role = 'knight'
@@ -9,6 +12,8 @@ class Knight < Piece
     @position = position
     @symbol = (color == 'white' ? "\u265E" : "\u2658")
     @notation = 'N'
+    @paths = 8
+    @each_path = 1
   end
 
   def direction(position, way)

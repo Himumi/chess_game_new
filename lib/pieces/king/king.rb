@@ -1,7 +1,10 @@
 require_relative '../piece/piece'
+require_relative '../../modules/uniq_update_moves'
 
 class King < Piece
-  attr_reader :role, :symbol, :notation
+  attr_reader :role, :symbol, :notation, :paths, :each_path
+
+  include UniqUpdateMoves
 
   def initialize(color, position)
     @role = 'king'
