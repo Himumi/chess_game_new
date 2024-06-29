@@ -25,8 +25,23 @@ class Pawn < Piece
 
     paths[@color]
   end
+
+  def capturable_direction(position, path)
+    a = position[0]
+    b = position[1]
+
+    paths = {
+      'white' => [[a - 1, b - 1], [a - 1, b + 1]],
+      'black' => [[a + 1, b - 1], [a + 1, b + 1]]
+    }
+
+    return nil if paths[@color][path].any? { |i| !i.between?(0, 7) }
+
+    paths[@color][path]
+  end
+
 end
 
-pawn = Pawn.new("black", "a1")
+pawn = Pawn.new("white", "a1")
 
-p pawn.valid_direction([6,0])
+p pawn.capturable_direction([6,0], 0)
