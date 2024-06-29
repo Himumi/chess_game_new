@@ -33,7 +33,7 @@ class Piece
       first = queue.shift
       key, path = first[0], first[1]
 
-      if seen[path] || key.nil? || (!board.on(key).nil? && board.on(key).ally?(@color))
+      if seen[path] || (!board.on(key).nil? && board.on(key).ally?(@color))
         seen[path] = key if !seen[path]
         next
       end
